@@ -70,9 +70,7 @@ public class StockImpl implements Stock{
   @Override
   public void update() throws IOException {
     Document doc = Jsoup.connect(url).get();
-
-    this.company = doc.select("meta[name=name]").attr("content");
-    this.ticker = doc.select("meta[name=tickerSymbol]").attr("content");
+    
     this.currentPrice = Double.parseDouble(doc.select("meta[name=price]").attr("content").substring(1));
   }
 
