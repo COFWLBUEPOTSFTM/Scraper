@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StockImpl implements Stock{
-  private String url;
-  private String company;
-  private String ticker;
+  private final String url;
+  private final String company;
+  private final String ticker;
   private double currentPrice;
 
   public static StockImpl AAPL, GME, MSFT;
@@ -70,7 +70,7 @@ public class StockImpl implements Stock{
   @Override
   public void update() throws IOException {
     Document doc = Jsoup.connect(url).get();
-    
+
     this.currentPrice = Double.parseDouble(doc.select("meta[name=price]").attr("content").substring(1));
   }
 
